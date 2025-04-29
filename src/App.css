@@ -494,3 +494,183 @@ a:visited {
 	color: white;
 	font-weight: bold;
 }
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+	.movie-detail {
+		padding: 15px;
+	}
+
+	.movie-poster-large {
+		width: 250px;
+		height: 375px;
+	}
+
+	.movie-info-large h1 {
+		font-size: 2.2rem;
+	}
+}
+
+@media (max-width: 992px) {
+	.movie-header {
+		flex-direction: column;
+		gap: 20px;
+		text-align: center;
+	}
+
+	.movie-poster-large {
+		width: 200px;
+		height: 300px;
+	}
+
+	.movie-meta {
+		justify-content: center;
+	}
+
+	.movie-genres {
+		justify-content: center;
+	}
+
+	.cast-grid {
+		max-width: 600px;
+	}
+}
+
+@media (max-width: 768px) {
+	.movie-backdrop {
+		height: 400px;
+	}
+
+	.movie-backdrop-overlay {
+		padding: 20px;
+	}
+
+	.movie-info-large h1 {
+		font-size: 1.8rem;
+	}
+
+	.movie-meta span {
+		font-size: 0.9rem;
+	}
+
+	.genre-tag {
+		font-size: 0.8rem;
+	}
+
+	.movie-content {
+		padding: 20px;
+	}
+
+	.movie-overview h2,
+	.movie-trailer h2,
+	.movie-teaser h2,
+	.movie-cast h2,
+	.movie-director h2 {
+		font-size: 1.5rem;
+	}
+
+	.cast-card {
+		width: 120px;
+	}
+
+	.cast-photo {
+		width: 120px;
+		height: 120px;
+	}
+
+	.director-photo {
+		width: 80px;
+		height: 80px;
+	}
+}
+
+@media (max-width: 576px) {
+	.movie-backdrop {
+		height: 300px;
+	}
+
+	.movie-poster-large {
+		width: 150px;
+		height: 225px;
+	}
+
+	.movie-info-large h1 {
+		font-size: 1.5rem;
+	}
+
+	.movie-meta {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.movie-genres {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.cast-grid {
+		max-width: 300px;
+	}
+
+	.cast-card {
+		width: 100px;
+	}
+
+	.cast-photo {
+		width: 100px;
+		height: 100px;
+	}
+
+	.trailer-container {
+		border-radius: 4px;
+	}
+}
+
+/* 네비게이션 반응형 */
+@media (max-width: 768px) {
+	.nav {
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.nav-link {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+/* 검색 폼 반응형 */
+@media (max-width: 576px) {
+	.search-form {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.search-input {
+		width: 100%;
+	}
+
+	.search-button {
+		width: 100%;
+	}
+}
+
+/* 영화 카드 그리드 반응형 */
+@media (max-width: 1200px) {
+	.movie-grid {
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	}
+}
+
+@media (max-width: 768px) {
+	.movie-grid {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	}
+}
+
+@media (max-width: 576px) {
+	.movie-grid {
+		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	}
+}
