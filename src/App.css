@@ -44,7 +44,7 @@
 .app {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 20px;
+	/* padding: 20px; */
 }
 
 .nav {
@@ -672,5 +672,52 @@ a:visited {
 @media (max-width: 576px) {
 	.movie-grid {
 		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	}
+}
+
+.movie-stills {
+	margin-bottom: 40px;
+}
+
+.movie-stills h2 {
+	font-size: 1.8rem;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.stills-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 15px;
+}
+
+.still-item {
+	position: relative;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease;
+}
+
+.still-item:hover {
+	transform: scale(1.02);
+}
+
+.still-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	aspect-ratio: 16/9;
+}
+
+@media (max-width: 992px) {
+	.stills-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 576px) {
+	.stills-grid {
+		grid-template-columns: 1fr;
 	}
 }

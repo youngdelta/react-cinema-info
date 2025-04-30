@@ -3,12 +3,18 @@ import { getPopularMovies } from '../api/tmdb';
 import MovieCard from '../components/MovieCard';
 import Pagination from '../components/Pagination';
 import useHoverStore from '../store/useHoverStore';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Popular() {
-	const { currentPage, setTotalPages } = useHoverStore();
+	const { currentPage, setCurrentPage, setTotalPages } = useHoverStore();
 	// const [currentPage, setCurrentPage] = useState(1);
 	// const [totalPages, setTotalPages] = useState(0);
+
+	useEffect(() => {
+		return () => {
+			setCurrentPage(1);
+		};
+	}, []);
 
 	const { data, isLoading, error } = useQuery({
 		queryKey: ['popularMovies', currentPage],

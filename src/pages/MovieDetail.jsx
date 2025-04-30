@@ -1,6 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { getMovieDetails, getMovieCredits, getMovieVideos } from '../api/tmdb';
+import {
+	getMovieDetails,
+	getMovieCredits,
+	getMovieVideos,
+	getMovieImages,
+} from '../api/tmdb';
 
 function MovieDetail() {
 	const { id } = useParams();
@@ -20,7 +25,17 @@ function MovieDetail() {
 		queryFn: () => getMovieVideos(id),
 	});
 
-	if (isDetailsLoading || isCreditsLoading || isVideosLoading) {
+	const { data: images, isLoading: isImagesLoading } = useQuery({
+		queryKey: ['movieImages', id],
+		queryFn: () => getMovieImages(id),
+	});
+
+	if (
+		isDetailsLoading ||
+		isCreditsLoading ||
+		isVideosLoading ||
+		isImagesLoading
+	) {
 		return <div>로딩 중...</div>;
 	}
 
@@ -31,6 +46,7 @@ function MovieDetail() {
 	const mainCast = credits?.data.cast?.slice(0, 5);
 	const trailer = videos?.results?.find((video) => video.type === 'Trailer');
 	const teaser = videos?.results?.find((video) => video.type === 'Teaser');
+	const stills = images?.backdrops?.slice(0, 6) || [];
 	console.log(trailer);
 
 	return (
@@ -109,6 +125,26 @@ function MovieDetail() {
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								allowFullScreen
 							></iframe>
+						</div>
+					</div>
+				)}
+
+				{stills.length > 0 && (
+					<div className="movie-stills">
+						<h2>스틸컷</h2>
+						<div className="stills-grid">
+							{stills.map((still, index) => (
+								<div
+									key={index}
+									className="still-item"
+								>
+									<img
+										src={`https://image.tmdb.org/t/p/w500${still.file_path}`}
+										alt={`${movie.title} 스틸컷 ${index + 1}`}
+										className="still-image"
+									/>
+								</div>
+							))}
 						</div>
 					</div>
 				)}

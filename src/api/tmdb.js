@@ -11,6 +11,11 @@ const tmdbApi = axios.create({
 	},
 });
 
+/**
+ *
+ * @param {*} page
+ * @returns
+ */
 export const getPopularMovies = async (page = 1) => {
 	const response = await axios.get(
 		`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=ko-KR&page=${page}`
@@ -50,6 +55,13 @@ export const searchMovies = async (query, page = 1) => {
 export const getMovieVideos = async (movieId) => {
 	const response = await axios.get(
 		`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=ko-KR`
+	);
+	return response.data;
+};
+
+export const getMovieImages = async (movieId) => {
+	const response = await axios.get(
+		`${BASE_URL}/movie/${movieId}/images?api_key=${API_KEY}`
 	);
 	return response.data;
 };

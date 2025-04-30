@@ -3,9 +3,10 @@ import { getTopRatedMovies } from '../api/tmdb';
 import MovieCard from '../components/MovieCard';
 import Pagination from '../components/Pagination';
 import useHoverStore from '../store/useHoverStore';
+import { useEffect } from 'react';
 
 function TopRated() {
-	const { currentPage, setTotalPages } = useHoverStore();
+	const { currentPage, setCurrentPage, setTotalPages } = useHoverStore();
 
 	const { data, isLoading, error } = useQuery({
 		queryKey: ['topRatedMovies', currentPage],
@@ -14,6 +15,12 @@ function TopRated() {
 			setTotalPages(data.total_pages);
 		},
 	});
+
+	useEffect(() => {
+		return () => {
+			setCurrentPage(1);
+		};
+	}, []);
 
 	if (isLoading) return <div>로딩 중...</div>;
 	if (error) return <div>에러가 발생했습니다: {error.message}</div>;
