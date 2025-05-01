@@ -7,6 +7,7 @@ import {
 	getTVVideos,
 	getTVImages,
 } from '../api/tmdb';
+import ImageCarousel from '../components/ImageCarousel';
 import '../App.css';
 
 function TVDetail() {
@@ -70,18 +71,6 @@ function TVDetail() {
 
 	const handleCloseCarousel = () => {
 		setSelectedImageIndex(null);
-	};
-
-	const handlePrevImage = () => {
-		setSelectedImageIndex((prev) =>
-			prev === 0 ? stills.length - 1 : prev - 1
-		);
-	};
-
-	const handleNextImage = () => {
-		setSelectedImageIndex((prev) =>
-			prev === stills.length - 1 ? 0 : prev + 1
-		);
 	};
 
 	return (
@@ -189,46 +178,10 @@ function TVDetail() {
 				)}
 
 				{selectedImageIndex !== null && (
-					<div className="carousel-overlay">
-						<div className="carousel-container">
-							<button
-								className="carousel-close"
-								onClick={handleCloseCarousel}
-							>
-								×
-							</button>
-							<button
-								className="carousel-prev"
-								onClick={handlePrevImage}
-							>
-								‹
-							</button>
-							<button
-								className="carousel-next"
-								onClick={handleNextImage}
-							>
-								›
-							</button>
-							<div className="carousel-image-container">
-								<img
-									src={`https://image.tmdb.org/t/p/original${stills[selectedImageIndex].file_path}`}
-									alt={`스틸컷 ${selectedImageIndex + 1}`}
-									className="carousel-image"
-								/>
-							</div>
-							<div className="carousel-indicators">
-								{stills.map((_, index) => (
-									<button
-										key={index}
-										className={`carousel-indicator ${
-											index === selectedImageIndex ? 'active' : ''
-										}`}
-										onClick={() => setSelectedImageIndex(index)}
-									/>
-								))}
-							</div>
-						</div>
-					</div>
+					<ImageCarousel
+						images={stills}
+						onClose={handleCloseCarousel}
+					/>
 				)}
 
 				{credits?.cast && credits.cast.length > 0 && (
