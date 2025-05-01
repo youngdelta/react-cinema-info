@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import {
 	getTVDetails,
 	getTVCredits,
@@ -10,6 +11,7 @@ import '../App.css';
 
 function TVDetail() {
 	const { id } = useParams();
+	const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
 	const { data: tv, isLoading: isLoadingDetails } = useQuery({
 		queryKey: ['tvDetails', id],
@@ -61,6 +63,26 @@ function TVDetail() {
 		(video) => video.type === 'Teaser' && video.site === 'YouTube'
 	);
 	const stills = images?.backdrops?.slice(0, 6) || [];
+
+	const handleImageClick = (index) => {
+		setSelectedImageIndex(index);
+	};
+
+	const handleCloseCarousel = () => {
+		setSelectedImageIndex(null);
+	};
+
+	const handlePrevImage = () => {
+		setSelectedImageIndex((prev) =>
+			prev === 0 ? stills.length - 1 : prev - 1
+		);
+	};
+
+	const handleNextImage = () => {
+		setSelectedImageIndex((prev) =>
+			prev === stills.length - 1 ? 0 : prev + 1
+		);
+	};
 
 	return (
 		<div className="tv-detail">
@@ -152,6 +174,8 @@ function TVDetail() {
 								<div
 									key={index}
 									className="still-item"
+									onClick={() => handleImageClick(index)}
+									style={{ cursor: 'pointer' }}
 								>
 									<img
 										src={`https://image.tmdb.org/t/p/w500${still.file_path}`}
@@ -160,6 +184,49 @@ function TVDetail() {
 									/>
 								</div>
 							))}
+						</div>
+					</div>
+				)}
+
+				{selectedImageIndex !== null && (
+					<div className="carousel-overlay">
+						<div className="carousel-container">
+							<button
+								className="carousel-close"
+								onClick={handleCloseCarousel}
+							>
+								×
+							</button>
+							<button
+								className="carousel-prev"
+								onClick={handlePrevImage}
+							>
+								‹
+							</button>
+							<button
+								className="carousel-next"
+								onClick={handleNextImage}
+							>
+								›
+							</button>
+							<div className="carousel-image-container">
+								<img
+									src={`https://image.tmdb.org/t/p/original${stills[selectedImageIndex].file_path}`}
+									alt={`스틸컷 ${selectedImageIndex + 1}`}
+									className="carousel-image"
+								/>
+							</div>
+							<div className="carousel-indicators">
+								{stills.map((_, index) => (
+									<button
+										key={index}
+										className={`carousel-indicator ${
+											index === selectedImageIndex ? 'active' : ''
+										}`}
+										onClick={() => setSelectedImageIndex(index)}
+									/>
+								))}
+							</div>
 						</div>
 					</div>
 				)}
