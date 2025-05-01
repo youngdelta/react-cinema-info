@@ -1,19 +1,24 @@
-import { useCallback } from 'react';
-import useHoverStore from '../store/useHoverStore';
+import useStore from '../store/useStore';
 
 function Pagination({ totalPages }) {
-	const { currentPage, setCurrentPage } = useHoverStore();
+	const { currentPage, setCurrentPage } = useStore();
 
-	const handlePageChange = useCallback((newPage) => {
-		if (newPage >= 1 && newPage <= totalPages) {
-			setCurrentPage(newPage);
+	const handlePrevPage = () => {
+		if (currentPage > 1) {
+			setCurrentPage(currentPage - 1);
 		}
-	}, []);
+	};
+
+	const handleNextPage = () => {
+		if (currentPage < totalPages) {
+			setCurrentPage(currentPage + 1);
+		}
+	};
 
 	return (
 		<div className="pagination">
 			<button
-				onClick={() => handlePageChange(currentPage - 1)}
+				onClick={handlePrevPage}
 				disabled={currentPage === 1}
 			>
 				이전
@@ -22,7 +27,7 @@ function Pagination({ totalPages }) {
 				{currentPage} / {totalPages}
 			</span>
 			<button
-				onClick={() => handlePageChange(currentPage + 1)}
+				onClick={handleNextPage}
 				disabled={currentPage === totalPages}
 			>
 				다음

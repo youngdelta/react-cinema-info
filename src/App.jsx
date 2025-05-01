@@ -6,6 +6,7 @@ import TopRated from './pages/TopRated';
 import Upcoming from './pages/Upcoming';
 import MovieDetail from './pages/MovieDetail';
 import Search from './pages/Search';
+import PeopleSearch from './pages/PeopleSearch';
 import ThemeSwitch from './components/ThemeSwitch';
 import './App.css';
 
@@ -51,6 +52,12 @@ function App() {
 						>
 							검색
 						</Link>
+						<Link
+							to="/people-search"
+							className="nav-link"
+						>
+							인물 검색
+						</Link>
 					</nav>
 					<main className="main-content">
 						<Routes>
@@ -77,6 +84,10 @@ function App() {
 							<Route
 								path="/search"
 								element={<Search />}
+							/>
+							<Route
+								path="people-search"
+								element={<PeopleSearch />}
 							/>
 						</Routes>
 					</main>

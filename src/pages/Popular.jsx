@@ -2,13 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import { getPopularMovies } from '../api/tmdb';
 import MovieCard from '../components/MovieCard';
 import Pagination from '../components/Pagination';
-import useHoverStore from '../store/useHoverStore';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import useStore from '../store/useStore';
 
 function Popular() {
-	const { currentPage, setCurrentPage, setTotalPages } = useHoverStore();
-	// const [currentPage, setCurrentPage] = useState(1);
-	// const [totalPages, setTotalPages] = useState(0);
+	const { currentPage, setCurrentPage, setTotalPages } = useStore();
 
 	useEffect(() => {
 		return () => {

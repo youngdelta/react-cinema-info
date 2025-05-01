@@ -3,14 +3,12 @@ import { useQuery } from '@tanstack/react-query';
 import { searchMovies } from '../api/tmdb';
 import MovieCard from '../components/MovieCard';
 import Pagination from '../components/Pagination';
-import useHoverStore from '../store/useHoverStore';
-import useSearchStore from '../store/useSearchStore';
+import useStore from '../store/useStore';
 
 function Search() {
-	// 검색어 상태를 전역 스토어에서 가져옴
-	const { searchQuery, setSearchQuery } = useSearchStore();
-	// 현재 페이지 번호와 전체 페이지 수를 설정하는 함수를 Zustand 스토어에서 가져옴
-	const { currentPage, setTotalPages } = useHoverStore();
+	// 통합 스토어에서 필요한 상태와 함수들을 가져옴
+	const { searchQuery, setSearchQuery, currentPage, setTotalPages } =
+		useStore();
 
 	const searchTxtRef = useRef(null);
 

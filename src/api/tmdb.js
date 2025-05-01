@@ -72,6 +72,31 @@ export async function getTrendingMovies() {
 	);
 	return response.json();
 }
+
+// 인물 검색 API
+export const searchPeople = async (query, page = 1) => {
+	const response = await axios.get(
+		`${BASE_URL}/search/person?api_key=${API_KEY}&language=ko-KR&query=${query}&page=${page}`
+	);
+	return response.data;
+};
+
+// 인물 상세 정보 API
+export const getPersonDetails = async (personId) => {
+	const response = await axios.get(
+		`${BASE_URL}/person/${personId}?api_key=${API_KEY}&language=ko-KR`
+	);
+	return response.data;
+};
+
+// 인물의 출연작/제작 작품 API
+export const getPersonCredits = async (personId) => {
+	const response = await axios.get(
+		`${BASE_URL}/person/${personId}/combined_credits?api_key=${API_KEY}&language=ko-KR`
+	);
+	return response.data;
+};
+
 /* 
 export async function getMovieDetails(movieId) {
 	const response = await fetch(
