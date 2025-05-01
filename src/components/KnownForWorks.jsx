@@ -16,7 +16,7 @@ function KnownForWorks({ works }) {
 			<div className="media-section">
 				<h4>{title}</h4>
 				<div className="works-grid">
-					{works.slice(0, 15).map((work) => (
+					{works.slice(0, 130).map((work) => (
 						<Link
 							to={`/${work.media_type === 'tv' ? 'tv' : 'movie'}/${work.id}`}
 							key={work.id}
