@@ -10,6 +10,7 @@ import PeopleSearch from './pages/PeopleSearch';
 import ThemeSwitch from './components/ThemeSwitch';
 import PersonDetail from './pages/PersonDetail';
 import TVDetail from './pages/TVDetail';
+import PopularTV from './pages/PopularTV';
 import './App.css';
 
 const queryClient = new QueryClient();
@@ -49,6 +50,12 @@ function App() {
 							개봉 예정
 						</Link>
 						<Link
+							to="/tv/popular"
+							className="nav-link"
+						>
+							인기 TV
+						</Link>
+						<Link
 							to="/search"
 							className="nav-link"
 						>
@@ -86,6 +93,10 @@ function App() {
 							<Route
 								path="/tv/:id"
 								element={<TVDetail />}
+							/>
+							<Route
+								path="/tv/popular"
+								element={<PopularTV />}
 							/>
 							<Route
 								path="/search"

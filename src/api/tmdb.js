@@ -144,6 +144,13 @@ export const searchMulti = async (query, page = 1) => {
 	return response.data;
 };
 
+export const getPopularTV = async (page = 1) => {
+	const response = await axios.get(
+		`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=ko-KR&page=${page}`
+	);
+	return response.data;
+};
+
 /* 
 export async function getMovieDetails(movieId) {
 	const response = await fetch(

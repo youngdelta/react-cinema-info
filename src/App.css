@@ -1885,3 +1885,108 @@ input:checked + .slider .slider-icon {
 		-webkit-line-clamp: 2;
 	}
 }
+
+/* TV 프로그램 섹션 스타일 */
+.tv-section {
+	padding: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.tv-section h2 {
+	font-size: 2rem;
+	margin-bottom: 30px;
+	color: var(--text-color);
+}
+
+.tv-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 20px;
+	margin-bottom: 30px;
+}
+
+.tv-card {
+	text-decoration: none;
+	color: var(--text-color);
+	background: var(--card-background);
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: var(--card-shadow);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tv-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tv-poster {
+	position: relative;
+	padding-top: 150%;
+	background-color: var(--border-color);
+}
+
+.tv-poster img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.tv-info {
+	padding: 15px;
+}
+
+.tv-info h3 {
+	font-size: 1.1rem;
+	margin-bottom: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.tv-date {
+	color: var(--cast-character-color);
+	font-size: 0.9rem;
+	margin-bottom: 5px;
+}
+
+.tv-rating {
+	color: var(--text-color);
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+@media (max-width: 768px) {
+	.tv-grid {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		gap: 15px;
+	}
+
+	.tv-info h3 {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.tv-grid {
+		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+		gap: 10px;
+	}
+
+	.tv-info {
+		padding: 10px;
+	}
+
+	.tv-info h3 {
+		font-size: 0.9rem;
+	}
+
+	.tv-date,
+	.tv-rating {
+		font-size: 0.8rem;
+	}
+}
