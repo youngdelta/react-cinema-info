@@ -6,6 +6,7 @@ import TopRated from './pages/TopRated';
 import Upcoming from './pages/Upcoming';
 import MovieDetail from './pages/MovieDetail';
 import Search from './pages/Search';
+import ThemeSwitch from './components/ThemeSwitch';
 import './App.css';
 
 const queryClient = new QueryClient();
@@ -18,6 +19,7 @@ function App() {
 			<Router>
 				<div className="app">
 					{/* {isHovered && <div className="blur-overlay" />} */}
+					<ThemeSwitch />
 					<nav className="nav">
 						<Link
 							to="/"
