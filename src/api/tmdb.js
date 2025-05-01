@@ -160,7 +160,7 @@ export const getPopularKoreanTV = async (page = 1) => {
 
 export const getKDramas = async (page = 1) => {
 	const response = await axios.get(
-		`${BASE_URL}/discover/tv?api_key=${API_KEY}&language=ko-KR&page=${page}&with_origin_country=KR&with_genres=18&sort_by=popularity.desc`
+		`${BASE_URL}/discover/tv?api_key=${API_KEY}&language=ko-KR&page=${page}&with_origin_country=KR&with_genres=18&sort_by=first_air_date.desc`
 	);
 	return response.data;
 };
