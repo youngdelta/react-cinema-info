@@ -151,45 +151,16 @@ export const getPopularTV = async (page = 1) => {
 	return response.data;
 };
 
-/* 
-export async function getMovieDetails(movieId) {
-	const response = await fetch(
-		`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=ko-KR`
+export const getPopularKoreanTV = async (page = 1) => {
+	const response = await axios.get(
+		`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=ko-KR&page=${page}&with_origin_country=KR`
 	);
-	return response.json();
-}
- */
-/* 
-export async function getMovieCredits(movieId) {
-	const response = await fetch(
-		`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=ko-KR`
+	return response.data;
+};
+
+export const getKDramas = async (page = 1) => {
+	const response = await axios.get(
+		`${BASE_URL}/discover/tv?api_key=${API_KEY}&language=ko-KR&page=${page}&with_origin_country=KR&with_genres=18&sort_by=popularity.desc`
 	);
-	return response.json();
-}
- */
-/* 
-export async function getMovieVideos(movieId) {
-	const response = await fetch(
-		`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=ko-KR`
-	);
-	return response.json();
-}
- */
-/* 
-export async function searchMovies(query) {
-	const response = await fetch(
-		`${BASE_URL}/search/movie?api_key=${API_KEY}&language=ko-KR&query=${encodeURIComponent(
-			query
-		)}`
-	);
-	return response.json();
-}
- */
-/* 
-export async function getMovieImages(movieId) {
-	const response = await fetch(
-		`${BASE_URL}/movie/${movieId}/images?api_key=${API_KEY}`
-	);
-	return response.json();
-}
- */
+	return response.data;
+};

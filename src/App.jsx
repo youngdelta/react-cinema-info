@@ -11,6 +11,8 @@ import ThemeSwitch from './components/ThemeSwitch';
 import PersonDetail from './pages/PersonDetail';
 import TVDetail from './pages/TVDetail';
 import PopularTV from './pages/PopularTV';
+import PopularKoreanTV from './pages/PopularKoreanTV';
+import KDrama from './pages/KDrama';
 import './App.css';
 
 const queryClient = new QueryClient();
@@ -56,6 +58,18 @@ function App() {
 							인기 TV
 						</Link>
 						<Link
+							to="/tv/korean"
+							className="nav-link"
+						>
+							한국 TV
+						</Link>
+						<Link
+							to="/tv/kdrama"
+							className="nav-link"
+						>
+							K-Drama
+						</Link>
+						<Link
 							to="/search"
 							className="nav-link"
 						>
@@ -97,6 +111,14 @@ function App() {
 							<Route
 								path="/tv/popular"
 								element={<PopularTV />}
+							/>
+							<Route
+								path="/tv/korean"
+								element={<PopularKoreanTV />}
+							/>
+							<Route
+								path="/tv/kdrama"
+								element={<KDrama />}
 							/>
 							<Route
 								path="/search"
