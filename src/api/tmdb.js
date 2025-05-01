@@ -97,6 +97,46 @@ export const getPersonCredits = async (personId) => {
 	return response.data;
 };
 
+export const getTVDetails = async (id) => {
+	const response = await fetch(
+		`${BASE_URL}/tv/${id}?api_key=${API_KEY}&language=ko-KR`
+	);
+	if (!response.ok) {
+		throw new Error('TV 프로그램 정보를 가져오는데 실패했습니다.');
+	}
+	return response.json();
+};
+
+export const getTVCredits = async (id) => {
+	const response = await fetch(
+		`${BASE_URL}/tv/${id}/credits?api_key=${API_KEY}&language=ko-KR`
+	);
+	if (!response.ok) {
+		throw new Error('TV 프로그램 출연진 정보를 가져오는데 실패했습니다.');
+	}
+	return response.json();
+};
+
+export const getTVVideos = async (id) => {
+	const response = await fetch(
+		`${BASE_URL}/tv/${id}/videos?api_key=${API_KEY}&language=ko-KR`
+	);
+	if (!response.ok) {
+		throw new Error('TV 프로그램 영상을 가져오는데 실패했습니다.');
+	}
+	return response.json();
+};
+
+export const getTVImages = async (id) => {
+	const response = await fetch(
+		`${BASE_URL}/tv/${id}/images?api_key=${API_KEY}`
+	);
+	if (!response.ok) {
+		throw new Error('TV 프로그램 이미지를 가져오는데 실패했습니다.');
+	}
+	return response.json();
+};
+
 /* 
 export async function getMovieDetails(movieId) {
 	const response = await fetch(

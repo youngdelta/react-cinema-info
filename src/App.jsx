@@ -8,6 +8,8 @@ import MovieDetail from './pages/MovieDetail';
 import Search from './pages/Search';
 import PeopleSearch from './pages/PeopleSearch';
 import ThemeSwitch from './components/ThemeSwitch';
+import PersonDetail from './pages/PersonDetail';
+import TVDetail from './pages/TVDetail';
 import './App.css';
 
 const queryClient = new QueryClient();
@@ -82,12 +84,20 @@ function App() {
 								element={<MovieDetail />}
 							/>
 							<Route
+								path="/tv/:id"
+								element={<TVDetail />}
+							/>
+							<Route
 								path="/search"
 								element={<Search />}
 							/>
 							<Route
 								path="people-search"
 								element={<PeopleSearch />}
+							/>
+							<Route
+								path="/person/:id"
+								element={<PersonDetail />}
 							/>
 						</Routes>
 					</main>

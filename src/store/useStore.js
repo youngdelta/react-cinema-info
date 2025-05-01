@@ -3,7 +3,9 @@ import { create } from 'zustand';
 const useStore = create((set) => ({
 	// 검색 관련 상태
 	searchQuery: '',
+	searchPeople: '',
 	setSearchQuery: (query) => set({ searchQuery: query }),
+	setSearchPeople: (people) => set({ searchPeople: people }),
 
 	// 페이지네이션 관련 상태
 	currentPage: 1,

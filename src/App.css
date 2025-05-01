@@ -275,24 +275,22 @@
 
 .cast-card {
 	text-align: center;
-	width: 150px;
+	text-decoration: none;
+	transition: transform 0.3s ease;
 }
 
-.cast-photo {
-	width: 150px;
-	height: 150px;
-	object-fit: cover;
-	border-radius: 50%;
-	margin-bottom: 10px;
+.cast-card:hover {
+	transform: translateY(-5px);
 }
 
 .cast-card h3 {
+	color: var(--text-color);
+	margin: 10px 0 5px;
 	font-size: 1.1rem;
-	margin-bottom: 5px;
 }
 
 .cast-card p {
-	color: #666;
+	color: var(--cast-character-color);
 	font-size: 0.9rem;
 }
 
@@ -307,25 +305,25 @@
 
 .director-info {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	gap: 15px;
+	gap: 20px;
+	text-decoration: none;
+	padding: 10px;
+	border-radius: 8px;
+	transition: background-color 0.3s ease;
 }
 
-.director-photo {
-	width: 100px;
-	height: 100px;
-	object-fit: cover;
-	border-radius: 50%;
+.director-info:hover {
+	background-color: var(--card-background);
 }
 
 .director-info h3 {
-	font-size: 1.2rem;
+	color: var(--text-color);
 	margin-bottom: 5px;
 }
 
 .director-info p {
-	color: #666;
+	color: var(--cast-character-color);
 }
 
 .movie-poster-small {
@@ -1399,4 +1397,441 @@ input:checked + .slider .slider-icon {
 
 .error-message {
 	color: #dc3545;
+}
+
+.known-for-works {
+	margin-top: 15px;
+}
+
+.known-for-works h4 {
+	font-size: 1rem;
+	margin-bottom: 10px;
+	color: var(--text-color);
+}
+
+.works-grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 15px;
+}
+
+.work-card {
+	text-decoration: none;
+	transition: transform 0.3s ease;
+}
+
+.work-card:hover {
+	transform: translateY(-3px);
+}
+
+.work-poster {
+	width: 100%;
+	aspect-ratio: 2/3;
+	object-fit: cover;
+	border-radius: 4px;
+	background-color: var(--border-color);
+}
+
+.work-title {
+	font-size: 0.9rem;
+	margin-top: 5px;
+	color: var(--text-color);
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@media (max-width: 1200px) {
+	.works-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media (max-width: 992px) {
+	.works-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.works-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 480px) {
+	.works-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+	}
+
+	.media-section h4 {
+		font-size: 1.1rem;
+	}
+}
+
+.person-detail {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.person-header {
+	display: flex;
+	gap: 40px;
+	margin-bottom: 40px;
+}
+
+.person-profile {
+	flex-shrink: 0;
+}
+
+.person-photo-large {
+	width: 300px;
+	height: 450px;
+	object-fit: cover;
+	border-radius: 8px;
+	box-shadow: var(--card-shadow);
+}
+
+.person-info-large {
+	flex: 1;
+}
+
+.person-info-large h1 {
+	font-size: 2.5rem;
+	margin-bottom: 20px;
+	color: var(--text-color);
+}
+
+.person-birthday,
+.person-birthplace {
+	font-size: 1.1rem;
+	margin-bottom: 10px;
+	color: var(--cast-character-color);
+}
+
+.person-biography {
+	margin-top: 30px;
+}
+
+.person-biography h2 {
+	font-size: 1.8rem;
+	margin-bottom: 20px;
+	color: var(--text-color);
+}
+
+.person-biography p {
+	font-size: 1.1rem;
+	line-height: 1.6;
+	color: var(--text-color);
+}
+
+.person-content {
+	margin-top: 40px;
+}
+
+.credits-section {
+	margin-bottom: 40px;
+}
+
+.credits-section h2 {
+	font-size: 1.8rem;
+	margin-bottom: 20px;
+	color: var(--text-color);
+}
+
+@media (max-width: 992px) {
+	.person-header {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	.person-photo-large {
+		width: 250px;
+		height: 375px;
+	}
+
+	.person-info-large h1 {
+		font-size: 2.2rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.person-photo-large {
+		width: 200px;
+		height: 300px;
+	}
+
+	.person-info-large h1 {
+		font-size: 1.8rem;
+	}
+
+	.person-birthday,
+	.person-birthplace {
+		font-size: 1rem;
+	}
+
+	.person-biography h2 {
+		font-size: 1.5rem;
+	}
+
+	.person-biography p {
+		font-size: 1rem;
+	}
+}
+
+.media-section {
+	margin-bottom: 30px;
+}
+
+.media-section h4 {
+	font-size: 1.2rem;
+	margin-bottom: 15px;
+	color: var(--text-color);
+	border-bottom: 2px solid var(--border-color);
+	padding-bottom: 8px;
+}
+
+.tv-detail {
+	max-width: 1200px;
+	margin: 0 auto;
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.tv-backdrop {
+	position: relative;
+	height: 500px;
+	background-size: cover;
+	background-position: center;
+	margin-bottom: 40px;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.tv-backdrop-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0.9) 0%,
+		rgba(0, 0, 0, 0.7) 50%,
+		rgba(0, 0, 0, 0.3) 100%
+	);
+	padding: 40px;
+	display: flex;
+	align-items: center;
+}
+
+.tv-header {
+	display: flex;
+	gap: 40px;
+	align-items: flex-start;
+}
+
+.tv-poster-large {
+	width: 300px;
+	height: 450px;
+	object-fit: cover;
+	border-radius: 8px;
+	box-shadow: var(--card-shadow);
+}
+
+.tv-info-large {
+	flex: 1;
+	color: white;
+}
+
+.tv-info-large h1 {
+	font-size: 2.5rem;
+	margin-bottom: 10px;
+}
+
+.tv-tagline {
+	font-style: italic;
+	color: #ccc;
+	margin-bottom: 20px;
+}
+
+.tv-meta {
+	display: flex;
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+.tv-meta span {
+	background: rgba(255, 255, 255, 0.1);
+	padding: 5px 10px;
+	border-radius: 4px;
+}
+
+.tv-content {
+	padding: 40px;
+	background: var(--content-background);
+	border-radius: 8px;
+	box-shadow: var(--card-shadow);
+}
+
+.tv-seasons,
+.tv-creators {
+	margin-bottom: 40px;
+}
+
+.tv-seasons h2,
+.tv-creators h2 {
+	font-size: 1.8rem;
+	margin-bottom: 20px;
+	color: var(--text-color);
+}
+
+.seasons-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 20px;
+}
+
+.season-card {
+	background: var(--card-background);
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: var(--card-shadow);
+}
+
+.season-poster {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+}
+
+.season-info {
+	padding: 15px;
+}
+
+.season-info h3 {
+	font-size: 1.1rem;
+	margin-bottom: 10px;
+	color: var(--text-color);
+}
+
+.season-info p {
+	color: var(--cast-character-color);
+	margin-bottom: 5px;
+}
+
+.creators-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 20px;
+}
+
+.creator-card {
+	text-align: center;
+	text-decoration: none;
+	transition: transform 0.3s ease;
+}
+
+.creator-card:hover {
+	transform: translateY(-5px);
+}
+
+.creator-card h3 {
+	color: var(--text-color);
+	margin: 10px 0 5px;
+	font-size: 1.1rem;
+}
+
+.creator-card p {
+	color: var(--cast-character-color);
+	font-size: 0.9rem;
+}
+
+@media (max-width: 992px) {
+	.tv-backdrop {
+		height: 400px;
+	}
+
+	.tv-header {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	.tv-poster-large {
+		width: 200px;
+		height: 300px;
+	}
+
+	.tv-info-large h1 {
+		font-size: 2rem;
+	}
+
+	.tv-meta {
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+}
+
+@media (max-width: 768px) {
+	.tv-backdrop {
+		height: 300px;
+	}
+
+	.tv-backdrop-overlay {
+		padding: 20px;
+	}
+
+	.tv-info-large h1 {
+		font-size: 1.8rem;
+	}
+
+	.tv-content {
+		padding: 20px;
+	}
+
+	.seasons-grid {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	}
+
+	.season-poster {
+		height: 225px;
+	}
+
+	.creators-grid {
+		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	}
+}
+
+@media (max-width: 576px) {
+	.tv-backdrop {
+		height: 250px;
+	}
+
+	.tv-poster-large {
+		width: 150px;
+		height: 225px;
+	}
+
+	.tv-info-large h1 {
+		font-size: 1.5rem;
+	}
+
+	.tv-meta span {
+		font-size: 0.9rem;
+	}
+
+	.seasons-grid {
+		grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+	}
+
+	.season-poster {
+		height: 195px;
+	}
 }

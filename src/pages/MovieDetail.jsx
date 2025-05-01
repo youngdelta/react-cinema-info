@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import {
 	getMovieDetails,
@@ -171,7 +171,8 @@ function MovieDetail() {
 					<h2>출연진</h2>
 					<div className="cast-grid">
 						{mainCast?.map((actor) => (
-							<div
+							<Link
+								to={`/person/${actor.id}`}
 								key={actor.id}
 								className="cast-card"
 							>
@@ -186,7 +187,7 @@ function MovieDetail() {
 								/>
 								<h3>{actor.name}</h3>
 								<p>{actor.character}</p>
-							</div>
+							</Link>
 						))}
 					</div>
 				</div>
@@ -194,7 +195,10 @@ function MovieDetail() {
 				{director && (
 					<div className="movie-director">
 						<h2>감독</h2>
-						<div className="director-info">
+						<Link
+							to={`/person/${director.id}`}
+							className="director-info"
+						>
 							<img
 								src={
 									director.profile_path
@@ -208,7 +212,7 @@ function MovieDetail() {
 								<h3>{director.name}</h3>
 								<p>{director.job}</p>
 							</div>
-						</div>
+						</Link>
 					</div>
 				)}
 			</div>
