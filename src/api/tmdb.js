@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = 'a8d7ee04752f6dd79d88adcbb27b4e15'; // TMDB API 키를 여기에 입력하세요
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 const tmdbApi = axios.create({
@@ -65,3 +65,52 @@ export const getMovieImages = async (movieId) => {
 	);
 	return response.data;
 };
+
+export async function getTrendingMovies() {
+	const response = await fetch(
+		`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=ko-KR`
+	);
+	return response.json();
+}
+/* 
+export async function getMovieDetails(movieId) {
+	const response = await fetch(
+		`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=ko-KR`
+	);
+	return response.json();
+}
+ */
+/* 
+export async function getMovieCredits(movieId) {
+	const response = await fetch(
+		`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=ko-KR`
+	);
+	return response.json();
+}
+ */
+/* 
+export async function getMovieVideos(movieId) {
+	const response = await fetch(
+		`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=ko-KR`
+	);
+	return response.json();
+}
+ */
+/* 
+export async function searchMovies(query) {
+	const response = await fetch(
+		`${BASE_URL}/search/movie?api_key=${API_KEY}&language=ko-KR&query=${encodeURIComponent(
+			query
+		)}`
+	);
+	return response.json();
+}
+ */
+/* 
+export async function getMovieImages(movieId) {
+	const response = await fetch(
+		`${BASE_URL}/movie/${movieId}/images?api_key=${API_KEY}`
+	);
+	return response.json();
+}
+ */

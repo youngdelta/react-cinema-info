@@ -6,9 +6,13 @@ import {
 	getMovieVideos,
 	getMovieImages,
 } from '../api/tmdb';
+import { useState } from 'react';
+import ImageCarousel from '../components/ImageCarousel';
 
 function MovieDetail() {
 	const { id } = useParams();
+	const [showCarousel, setShowCarousel] = useState(false);
+	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
 	const { data: movieDetails, isLoading: isDetailsLoading } = useQuery({
 		queryKey: ['movieDetails', id],
@@ -48,6 +52,11 @@ function MovieDetail() {
 	const teaser = videos?.results?.find((video) => video.type === 'Teaser');
 	const stills = images?.backdrops?.slice(0, 6) || [];
 	console.log(trailer);
+
+	const handleStillClick = (index) => {
+		setSelectedImageIndex(index);
+		setShowCarousel(true);
+	};
 
 	return (
 		<div className="movie-detail">
@@ -137,6 +146,7 @@ function MovieDetail() {
 								<div
 									key={index}
 									className="still-item"
+									onClick={() => handleStillClick(index)}
 								>
 									<img
 										src={`https://image.tmdb.org/t/p/w500${still.file_path}`}
@@ -147,6 +157,14 @@ function MovieDetail() {
 							))}
 						</div>
 					</div>
+				)}
+
+				{showCarousel && (
+					<ImageCarousel
+						images={stills}
+						initialIndex={selectedImageIndex}
+						onClose={() => setShowCarousel(false)}
+					/>
 				)}
 
 				<div className="movie-cast">
